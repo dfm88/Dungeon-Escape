@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Player.cs" />
+    <Compile Include="Assets\Script\PlayerAnimation.cs" />
     <Reference Include="UnityEngine">
       <HintPath>E:/Unity/Hub/Editor/2019.4.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
