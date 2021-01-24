@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,12 +29,19 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Movments();
+        Attack();
+    }
+
+
+    private void Movments()
+    {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        _rigidB.velocity = new Vector2(horizontalInput*_speed, _rigidB.velocity.y);
+        _rigidB.velocity = new Vector2(horizontalInput * _speed, _rigidB.velocity.y);
 
         //jump
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
         {
             _rigidB.velocity = Vector2.up * _jumpForce;
         }
@@ -43,6 +51,15 @@ public class Player : MonoBehaviour
 
         flipSprite(horizontalInput, _spriteRenderer); //gira lo spite a seconda della direzione in cui mi muovo
     }
+
+    private void Attack()
+    {
+       if(Input.GetMouseButtonDown(0) && isGrounded())
+        {
+            _anim.attackAnimation();
+        }
+    }
+
 
     private bool isGrounded()
     {

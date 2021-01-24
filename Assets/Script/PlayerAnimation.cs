@@ -6,12 +6,14 @@ public class PlayerAnimation : MonoBehaviour
 {
 
     private Animator _anim;
-    
+    private Animator _swordAnimation;
+
 
     // Start is called before the first frame update
     void Start()
     {
         _anim = GetComponentInChildren<Animator>(); //in children perchè l'animazione è nello Sprite che è figlio di Player
+        _swordAnimation = transform.GetChild(1).GetComponent<Animator>();
     }
 
    public void moveAnimation(float move)
@@ -29,6 +31,16 @@ public class PlayerAnimation : MonoBehaviour
         _anim.SetBool("Jumping", !(isGrounded));
         
     }
+
+    public void attackAnimation()
+    {
+        _anim.SetTrigger("Attack");
+        _swordAnimation.SetTrigger("SwordAnimation");
+    }
+
+
+
+
 
     
 
